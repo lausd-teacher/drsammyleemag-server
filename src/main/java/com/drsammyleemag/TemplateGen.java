@@ -25,7 +25,7 @@ public class TemplateGen{
 		cfg.setServletContextForTemplateLoading(ctx, "WEB-INF/html");
 		// Specify how templates will see the data-model. This is an advanced topic...
 		// for now just use this:
-		DefaultObjectWrapperBuilder owb = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_23);
+		DefaultObjectWrapperBuilder owb = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_28);
 		owb.setForceLegacyNonListCollections(false);
 		owb.setDefaultDateType(TemplateDateModel.DATETIME);
 		cfg.setObjectWrapper(owb.build());
@@ -57,7 +57,6 @@ public class TemplateGen{
 	public  Template getTeacherPage(){
 		try {
 			Template teacherPage = cfg.getTemplate("teacher.html");
-			LOG.info(teacherPage.toString());
 			return teacherPage;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -67,9 +66,9 @@ public class TemplateGen{
 		
 	}
 	
-	public  Template getStudentPage(){
+	public  Template getPlaygroundPage(){
 		try {
-			Template studentPage = cfg.getTemplate("student.html");
+			Template studentPage = cfg.getTemplate("playgroundSchedule.html");
 			return studentPage;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

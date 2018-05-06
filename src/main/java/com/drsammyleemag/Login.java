@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 
-import static com.drsammyleemag.DB.db;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.appengine.api.users.User;
@@ -19,7 +19,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 
-
+@WebServlet("/login")
 public class Login extends HttpServlet{
 	private final Logger log = Logger.getAnonymousLogger();
 	@Override

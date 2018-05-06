@@ -100,6 +100,20 @@
     <groupId>com.google.api-client</groupId>
     <artifactId>google-api-client-appengine</artifactId>
     <version>1.23.0</version>
+    <exclusions>
+    	<exclusion>
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>servlet-api</artifactId>
+    	</exclusion>
+    	<exclusion>
+    		<groupId>javax.jdo</groupId>
+    		<artifactId>jdo2-api</artifactId>
+    	</exclusion>
+    	<exclusion>
+    		<groupId>com.google.http-client</groupId>
+    		<artifactId>google-http-client-jdo</artifactId>
+    	</exclusion>
+    </exclusions>
 </dependency>
    
     <dependency>
@@ -181,7 +195,7 @@
 
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.0.0</version>
       </plugin>
 
       <plugin>

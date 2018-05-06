@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import com.drsammyleemag.entity.Schedule;
-
 
 public class TeacherServlet extends HttpServlet { 
 	private final Logger log = Logger.getLogger("logger");

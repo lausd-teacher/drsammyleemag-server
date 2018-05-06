@@ -42,7 +42,7 @@ public class TeacherService extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException{
 		String uri = req.getPathInfo();
 		if(uri == null) {
-			
+			getTeacherPage(req, res);
 		}else {
 		switch(uri) {
 		case AppUrl.STU_MONTH:getStudentMonth(req,res); break;

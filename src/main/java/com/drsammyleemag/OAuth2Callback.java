@@ -4,6 +4,7 @@ package com.drsammyleemag;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +15,7 @@ import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineA
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 
+@WebServlet("/oauth2callback")
 public class OAuth2Callback extends AbstractAppEngineAuthorizationCodeCallbackServlet{
 
 	@Override

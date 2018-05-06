@@ -11,16 +11,11 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.Work;
 
-import com.drsammyleemag.entity.*;
-
 
 public class DB<T> implements Serializable {
 	
 	static {
 		
-		//Roster and Deps
-		
-		//schoology stuff here
 	}
 	
 
@@ -67,10 +62,7 @@ public class DB<T> implements Serializable {
 		
 	}
 	
-	public  List<T> query(String condition, Object value){
-		
-	return	DB.db().load().type(clazz).filter(condition, value).list();
-	}
+
 	
 	public  T getById(Long id){
 		
@@ -87,9 +79,7 @@ public class DB<T> implements Serializable {
 		return DB.db().load().keys(keys).values();
 	}
 	
-	public List<T> search(String field, String query){
-		return    DB.db().load().type(clazz).filter(field +" >=", query).filter(field + " <=", query + "\ufffd").list();
-		}
+
 	
 }
 		
