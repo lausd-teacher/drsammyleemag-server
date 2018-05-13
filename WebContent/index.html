@@ -21,12 +21,12 @@
 </head>
 <body>
 	<header>
-		<nav role="navigation">
+		<nav role="navigation" class="transparent">
 			<div class="nav-wrapper">
 				<a id="logo-container" href="/" class="brand-logo"
 					style="margin-left: 1em"
-				><img alt="Dr. Sammy Lee Magnet School" src="img/sammyLee.png" /></a>
-				<ul class="right center hide-on-med-and-down">
+				><img id="logoImg" alt="Dr. Sammy Lee Magnet School" src="img/sammyLee.png" /></a>
+				<ul class="right hide-on-med-and-down red-text text-darken-3">
 					<li><a
 						class="btn  dropdown-trigger nav-btn red-text text-darken-4"
 						data-target="schoolTabDrop" href="#"
@@ -39,44 +39,48 @@
 						class="btn  dropdown-trigger nav-btn red-text text-darken-4"
 						data-target="parentTabDrop" href="#"
 					>Parents</a></li>
-					<li><a
-						class="btn nav-btn red-text text-darken-4"
-						href="/teacher">Teachers</a></li>
 				</ul>
 				<!-- Drops for the above -->
 				<ul id="schoolTabDrop" class="dropdown-content">
 					<li><a>News</a></li>
+					<li><a>Office Hours </a></li>
 					<li><a>Bell Schedule</a></li>
 					<li><a>Breakfast/Lunch Cal</a></li>
+					<li><a>Bus Routes</a></li>
 					<li><a>Magnet Curriculum</a></li>
-					<li><a>Office Hours </a></li>
 					<li><a>Applying</a></li>
 					<li><a>About</a></li>
 				</ul>
 				<ul id="studentTabDrop" class="dropdown-content">
 					<li><a>Schoology</a></li>
-					<li><a>School Expectations</a></li>
+					<li><a>Expectations</a></li>
+					<li><a>Devices</a></li>
 					<li><a>Learning</a></li>
-					<li><a>Challenge</a></li>
 				</ul>
 				<ul id="parentTabDrop" class="dropdown-content">
-					<li><a></a></li>
+					<li><a>Parent Center</a></li>
+					<li><a>Handbook</a></li>
+					<li><a>SSC</a></li>
+					<li><a>ELAC</a></li>
+					<li><a>After School Programs</a></li>
 				</ul>
 				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i
-					class="material-icons black-text"
+					class="material-icons red-text text-darken-4"
 				>menu</i></a>
 			</div>
 		</nav>
-		<aside>
+	</header>
+	<aside>
 			<ul id="nav-mobile" class="sidenav collapsible collapsible-accordian">
 				<li><a class="collapsible-header">School</a>
 					<div class="collapsible-body">
 					<ul id="schoolLinks">
 					<li><a>News</a></li>
+					<li><a>Office Hours </a></li>
 					<li><a>Bell Schedule</a></li>
 					<li><a>Breakfast/Lunch Cal</a></li>
+					<li><a>Bus Routes</a></li>
 					<li><a>Magnet Curriculum</a></li>
-					<li><a>Office Hours </a></li>
 					<li><a>Applying</a></li>
 					<li><a>About</a></li>
 					</ul>
@@ -86,25 +90,36 @@
 					<div class="collapsible-body">
 						<ul id="studentLinks">
 					<li><a>Schoology</a></li>
-					<li><a>School Expectations</a></li>
+					<li><a>Expectations</a></li>
+					<li><a>Devices</a></li>
 					<li><a>Learning</a></li>
-					<li><a>Challenge</a></li>
 					</ul>
 					</div>
 				</li>
 				<li class="divider" tabindex="-1"></li>
-				<li><a class="collapsible-header" href="#">Parents</a></li>
+				<li><a class="collapsible-header" href="#">Parents</a>
+				<div class="collapsible-body">
+						<ul id="studentLinks">
+					<li><a>Parent Center</a></li>
+					<li><a>Handbook</a></li>
+					<li><a>SSC</a></li>
+					<li><a>ELAC</a></li>
+					<li><a>After School Programs</a></li>
+					</ul>
+					</div>
+				</li>
 				<li class="divider" tabindex="-1"></li>
-				<li><a class="collapsible-header" href="#">Teachers</a></li>
 			</ul>
 		</aside>
-	</header>
 	<main>
-	<div class="container">
-		<video role="presentation" preload="auto" loop id="schoolVid" muted
-			class="bgVideovideo" src="https://storage.googleapis.com/staging.project-id-8007216323839333350.appspot.com/SchoolVid.mp4"
-			style="position: absolute; z-index: 0; width: 100%; height: auto; left: 0px; vertical-align: baseline"
-		></video>
+		<div class="container">
+		<div id="main-content" class="white red-text text-darken-2" >
+			<h1>Dr. Sammy Lee Magent Elementary</h1>
+			<p>Is committed to giving all student the best possible education</p>
+			<p>We know that no matter what the status we are to help student become life long learners</p>
+			<p>More info on the school what we've done and how we've done it can be found at any place and time</p>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		</div>
 	</div>
 	</main>
 	<footer class="red darken-4">
@@ -143,10 +158,12 @@
 		</div>
 	</footer>
 	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"
 	></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.6/page.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/is-in-viewport/3.0.0/isInViewport.min.js"></script>
 	<script src="js/init.js"></script>
 </body>
 </html>
