@@ -1,5 +1,6 @@
 //need library access
 var $nav = $('nav');
+var scrollable = true;
 
 
 (function($){
@@ -54,7 +55,7 @@ function windowCheck(){
 			  //hide the video element
               $('video').hide();
               $('#main-content').addClass('mainContentHigh');
-              $('footer').css('position', 'static');
+              $('footer').css('position', 'relative');
               if(!$nav.hasClass('amber')){
       	  		$nav.removeClass('transparent').addClass('amber darken-1 ');
       	  		$('img#logoImg', 'header').addClass('small');
@@ -75,12 +76,13 @@ function windowCheck(){
 
 function bannerScrollOn(){
 	 /* scrolling to sephiaSmall */
+
+	  	var vid = document.getElementById('schoolVid');
     $(document).on('scroll',function(){
   	  	if(window.scrollY > 300){
   	  		if(!$nav.hasClass('amber')){
   	  		$nav.removeClass('transparent').addClass('amber darken-1 ');
   	  		$('img#logoImg', 'header').addClass('small');
-  	  	var vid = document.getElementById('schoolVid');
   	  		vid.pause();
   	  		$(vid).css('filter', 'sepia(100%)');
   	  		}
