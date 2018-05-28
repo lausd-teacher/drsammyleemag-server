@@ -89,6 +89,17 @@ public class TemplateGen{
 		return null;
 	}
 	
+	public Template getHomePage() {
+		Template hp;
+		try {
+			hp = cfg.getTemplate("index.html");
+			return hp;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 
