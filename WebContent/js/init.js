@@ -1,7 +1,9 @@
 //need library access
 var $nav = $('nav');
 var $containter =$('div#container');
+var $mainContent = $('div#main-content');
 var base = "/dr-sammy-lee";
+var onHomePage = true;
 var mainContentTop ;
 var vid;
 var LINKS = {
@@ -12,32 +14,13 @@ var LINKS = {
 	menu : base + '/menu'
 };
 
+
+
 (function($) {
 	$(function() {
 		
-		//here we put the pages
-		//define the url for the page
-		//school links
-		page('/', showHome);
-		page('/dr-sammy-lee', showHome);
-		page(LINKS.news, showNews);
-		/* page('/dr-sammy-lee/school-info', showSchoolInfo)
-		 page('/dr-sammy-lee/office-hours', showOfficeHours);
-		 page('/dr-sammy-lee/bell-schedule', showBellSchedule);
-		page('/dr-sammy-lee/food-cal',showFoodCal);
-		page('/dr-sammy-lee/bus-routes', showBusRoutes);
-		page('/dr-sammy-lee/curriculum', showCurriculim);
-		page('/dr-sammy-lee/apply', showApply);
-		page('/dr-sammy-lee/about', showAbout);
-		//student links
-		 page('/dr-sammy-lee/schoology-info', showSchoologyInfo);
-		 page('/dr-sammy-lee/expectations', showExpectations);
-		 page('/dr-sammy-lee/devices' , showDevices);
-		 page('/dr-sammy-lee/learning', showLearning);*/
+		page('/*', pageChange);
 		page.start();
-			page(window.location.pathname);
-		
-
 		//what happens on resize
 		$(window).resize(function() {
 			windowCheck();
@@ -50,7 +33,6 @@ var LINKS = {
 		$('.collapsible').collapsible();
 
 		///this is only if window more than 600px
-		var platform = window.navigator.platform;
 		if (screen.availWidth > 767 && screen.availHeight > 767) {
 			$('body')
 					.append(
@@ -66,16 +48,13 @@ var LINKS = {
 		}
 		windowCheck();
 
-		//set link
-		$('a.news-link').click(function() {
-			window.location
-		});
+		
+		
 	}); // end of document ready
 })(jQuery); // end of jQuery name space
 
 
 function windowCheck() {
-	
 	var $footer = $('footer');
 	if (window.outerWidth < 769
 			|| window.outerWidth < (window.outerHeight + window.outerHeight * 0.1)) {
@@ -89,14 +68,15 @@ function windowCheck() {
 		$footer.css('position', 'relative');
 		if (!$nav.hasClass('amber')) {
 			$nav.removeClass('transparent').addClass('amber darken-1 ');
-			$img.addClass('small');
 		}
 		
 
 	} else {
 		if (vid) {
 			vid.style.display = 'block';
+			if(onHomePage){
 			vid.play();
+			}
 		}
 		
 		$footer.css('position', 'fixed');
@@ -114,16 +94,13 @@ function bannerScrollOn() {
 console.log('call banner scroll on');
 	
 	$(document).on('scroll', function() {
-		if (window.scrollY > 100) {
+		if (window.scrollY > 100 && onHomePage) {
 			console.log('window scrollY is greater than 100 : ' + window.scrollY);
 			if (!$nav.hasClass('amber')) {
 				navOn();
-				if(vid){
-				vid.pause();
-				vid.classList.add('video-stop');
+				
 			}
-			}
-		} else {
+		} else if(window.scrollY < 100 && onHomePage){
 			console.log('window scrollY is less than 100 : ' + window.scrollY);
 			if ($nav.hasClass('amber')) {
 				navOff();
@@ -144,59 +121,66 @@ function navOn() {
 	console.log('nav on called');
 	$nav.removeClass('transparent').addClass('amber darken-1 ');
 	$('img#logoImg', 'header').addClass('small');
-	$('#main-content').css('opacity', '1');
+	$mainContent.css('opacity', '1');
 	$nav.addClass('nav-on');
+	if(vid){
+		vid.pause();
+		vid.classList.add('video-stop');
+	}
 
 }
 function navOff() {
 	console.log('nav off called');
 	$nav.addClass('transparent').removeClass('amber darken-1 ');
 	$('img#logoImg', 'header').removeClass('small');
-	$('#main-content').css('opacity', '0');
+	$mainContent.css('opacity', '0');
 	$nav.removeClass('nav-on');
 
 }
 
-function pageChange(ctx) {
-	console.log('page change called');
-	
-	
-	if(ctx.pathname == '/' || ctx.pathname == '/dr-sammy-lee'){
-		onHomePage = true;
+function pageChange(ctx){
+	console.log(ctx);
+	if(ctx.path == base  || ctx.path == '/' && onHomePage){
+		showHome();
+		return;
 	}else{
-		onHomePage = false;
-	}
-	
-	if (!$nav.hasClass('nav-on') && !onHomePage) {
-		navOn();
-		var $mainContent = $('#main-content');
-		if($mainContent){
-			$mainContent.hide();
-		}
 		
-		if (vid && vid.style.display != 'hidden') {
-			vid.style.display = 'hidden';
-			vid.pause();
-		}
+		navOn();
+	
+		$mainContent.fadeOut();
+		onHomePage = false;
+		
+		
+	}
+	switch(ctx.path){
+	case LINKS.news: showNews();break;
+	default: showHome();
 	}
 }
 
-function showHome(ctx) {
-	
-	pageChange(ctx);
+function showHome() {
+	onHomePage = true;
 	//hide all the frames or other content
 	$('iframe').hide();
-	$('#main-content').show();
+	$mainContent.show();
+	if(vid){
+		vid.classList.remove('video-stop');
+		vid.play();
+		navOff();
+	}
 	resizeHome();
 	
 }
+
+
 function resizeHome(){
-	var $mainContent = $('#main-content');
+	console.log('resize home called');
 	var $img = $('img#logoImg','header');
 	if (window.outerWidth < 769
 			|| window.outerWidth < (window.outerHeight + window.outerHeight * 0.1)) {
 		/*This is landing page only */
-		$mainContent.addClass('mainContentHigh').css('opacity', '1');
+		$mainContent.css('opacity', '1').css('top', '5.5em');
+		$img.addClass('small');
 		bannerScrollOff();
 		/*end landing page only */
 	}else{
@@ -215,11 +199,9 @@ function resizeHome(){
 	}
 }
 
-function showNews(ctx) {
+function showNews() {
 	
 	console.log('show news called');
-	onHomePage = false;
-	pageChange(ctx);
 	$('iframe#page-frame').show().attr('src',
 			'https://drsammyleemag.blogspot.com').css({
 		display : 'inline-block',
